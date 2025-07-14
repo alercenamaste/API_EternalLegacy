@@ -165,7 +165,7 @@ public class LeeDatosdesdeAWS {
 @Path("/login")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public Response loginUser(InsertUserRegister user) {
+public Response loginUser(RequestLogin user) {
     // Validación de entrada
     if (user.getUsername() == null || user.getPassword() == null) {
         return Response.status(Response.Status.BAD_REQUEST)

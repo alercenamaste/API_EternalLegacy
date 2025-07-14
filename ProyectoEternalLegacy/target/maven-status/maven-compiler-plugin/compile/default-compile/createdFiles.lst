@@ -3,5 +3,6 @@ com\servicios\api_servicios\resources\LeeDatosdesdeAWS.class
 com\servicios\api_servicios\resources\UserPostgres.class
 com\servicios\api_servicios\resources\InsertContenidoUsuario.class
 com\servicios\api_servicios\resources\InsertUserRegister.class
+com\servicios\api_servicios\resources\RequestLogin.class
 com\servicios\api_servicios\resources\ArchivoRequest.class
 com\servicios\api_servicios\resources\User.class

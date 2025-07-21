@@ -8,6 +8,5 @@ import javax.ws.rs.core.Application;
  * @author Juneau
  */
 @ApplicationPath("/api/v1")
-public class JAXRSConfiguration extends Application {
-    
+public class JAXRSConfiguration extends Application {    
 }

@@ -23,21 +23,5 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
-  <!-- Jersey servlet -->
-  <servlet>
-    <servlet-name>jersey-serlvet</servlet-name>
-    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
-    <init-param>
-      <param-name>jersey.config.server.provider.packages</param-name>
-      <param-value>com.tu.paquete</param-value> <!-- REEMPLAZA con tu paquete -->
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>jersey-serlvet</servlet-name>
-    <url-pattern>/api/v1/*</url-pattern>
-  </servlet-mapping>
-
 </web-app>
 

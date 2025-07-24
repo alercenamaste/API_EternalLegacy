@@ -56,7 +56,14 @@ public class LeeDatosdesdeAWS {
             e.printStackTrace();
         }
     }
-
+    @GET
+    @Path("/prueba_ping")
+    public Response ping() {
+        return Response
+                .ok("ping")
+                .build();
+    }
+    
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)

@@ -1,15 +1,19 @@
 package com.eternal.api.resources;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import java.util.logging.Logger;
 
 @Path("/ping")
 public class PingResource {
-    @GET
-    @Produces("application/json")
+    private static final Logger logger = Logger.getLogger(PingResource.class.getName());
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
     public Response ping() {
-        return Response.ok("{\"status\": \"ok\"}").build();
+        logger.info("Ping endpoint reached");
+        return Response.ok("{\"message\": \"pong\"}").build();
     }
 }

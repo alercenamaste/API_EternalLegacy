@@ -1,6 +1,7 @@
 package com.eternal.api;
 
 import org.glassfish.jersey.server.ResourceConfig;
+
 import javax.ws.rs.ApplicationPath;
 
 @ApplicationPath("/api/v1")

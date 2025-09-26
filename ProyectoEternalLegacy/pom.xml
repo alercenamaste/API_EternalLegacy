@@ -89,9 +89,21 @@
                 <version>3.8.1</version>
                 <configuration>
                     <source>1.8</source>
-                    <target>1.8</target>
+		    <target>1.8</target>
+		    <encoding>UTF-8</encoding>
                 </configuration>
-            </plugin>
+	</plugin>
+	<!-- este plugin empaqueta las dependencias -->
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-war-plugin</artifactId>
+      <version>3.2.3</version>
+      <configuration>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+        <packagingExcludes></packagingExcludes>
+        <archiveClasses>true</archiveClasses>
+      </configuration>
+    </plugin>
         </plugins>
     </build>
 </project>

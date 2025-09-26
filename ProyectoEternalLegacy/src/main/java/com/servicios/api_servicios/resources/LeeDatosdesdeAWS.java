@@ -34,12 +34,14 @@ import software.amazon.awssdk.services.s3.presigner.S3Presigner;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import software.amazon.awssdk.services.s3.presigner.model.PresignedPutObjectRequest;
 //
+import javax.ws.rs.OPTIONS;
+
+//
 import java.net.URI;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 @Path("/users")
 public class LeeDatosdesdeAWS {
 
@@ -47,7 +49,7 @@ public class LeeDatosdesdeAWS {
     private static final String DB_USER = "postgres";
     private static final String DB_PASSWORD = "01Febrero1981";
     private static final String BUCKET_NAME = "contenedoreternallegacyqrinicio";
-    private static final Region REGION = Region.US_EAST_2; // RegiÛn de Ohio
+    private static final Region REGION = Region.US_EAST_2; // Regi√≥n de Ohio
 
     static {
         try {
@@ -56,14 +58,26 @@ public class LeeDatosdesdeAWS {
             e.printStackTrace();
         }
     }
-    @GET
+    
+    @OPTIONS
     @Path("/prueba_ping")
-    public Response ping() {
-        return Response
-                .ok("ping")
-                .build();
+    public Response preflight() {
+        return Response.ok()
+            .header("Access-Control-Allow-Origin", "*")
+            .header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+            .header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept, Authorization")
+            .header("Access-Control-Allow-Credentials", "true")
+            .build();
     }
     
+   @GET
+    @Path("/prueba_ping")
+    public Response getPing() {
+        return Response.ok("pong").build();
+    }
+
+
+
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -108,7 +122,7 @@ public class LeeDatosdesdeAWS {
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
             String sql = "INSERT INTO users (username, email) VALUES (?, ?)";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setString(1, user.getUsername()); // CambiÈ de getNombre() a getUsername()
+                statement.setString(1, user.getUsername()); // Cambi√© de getNombre() a getUsername()
                 statement.setString(2, user.getEmail());
                 statement.executeUpdate();
             }
@@ -128,7 +142,7 @@ public class LeeDatosdesdeAWS {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createUserRegister(InsertUserRegister user) {
-        // ValidaciÛn de datos recibidos
+        // Validaci√≥n de datos recibidos
         if (user.getUsername() == null || user.getUsername().isEmpty()
                 || user.getPassword() == null || user.getPassword().isEmpty()
                 || user.getName() == null || user.getName().isEmpty()
@@ -173,7 +187,7 @@ public class LeeDatosdesdeAWS {
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public Response loginUser(RequestLogin user) {
-    // ValidaciÛn de entrada
+    // Validaci√≥n de entrada
     if (user.getUsername() == null || user.getPassword() == null) {
         return Response.status(Response.Status.BAD_REQUEST)
                 .entity("{\"error\": \"Username and password are required\"}")
@@ -271,7 +285,7 @@ public Response loginUser(RequestLogin user) {
                 .credentialsProvider(DefaultCredentialsProvider.create())
                 .build()) {
 
-            //String key = "uploads/" + request.fileName(); // puedes generar carpetas din·micas aquÌ
+            //String key = "uploads/" + request.fileName(); // puedes generar carpetas din√°micas aqu√≠
             // Definimos el nombre del archivo en S3 usando la carpeta correcta
             String key = "contenedoreternallegacyqrinicio/" + request.getFileName();
             System.out.println("Servicio Upload Key :MO");
@@ -284,7 +298,7 @@ public Response loginUser(RequestLogin user) {
 
             PresignedPutObjectRequest presignedRequest = presigner.presignPutObject(r -> r
                     .putObjectRequest(objectRequest)
-                    .signatureDuration(Duration.ofMinutes(10)) // v·lido por 10 min
+                    .signatureDuration(Duration.ofMinutes(10)) // v√°lido por 10 min
             );
 
             Map<String, String> responseMap = new HashMap<>();
@@ -304,7 +318,7 @@ public Response loginUser(RequestLogin user) {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createUserRegister(InsertContenidoUsuario user) {
-        // ValidaciÛn de datos requeridos
+        // Validaci√≥n de datos requeridos
         if (user.getURL() == null || user.getURL().isEmpty()
                 || user.getEmail() == null || user.getEmail().isEmpty()) {
             return Response.status(Response.Status.BAD_REQUEST)
@@ -312,7 +326,7 @@ public Response loginUser(RequestLogin user) {
                     .build();
         }
 
-        // ConexiÛn y ejecuciÛn del INSERT
+        // Conexi√≥n y ejecuci√≥n del INSERT
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
             String sql = "INSERT INTO usersregisterContenido (URL, email) VALUES (?, ?)";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {

@@ -1,0 +1,9 @@
+com/eternal/api/AppConfig.class
+com/eternal/api/resources/UserPostgres.class
+com/eternal/api/resources/InsertContenidoUsuario.class
+com/eternal/api/resources/LeeDatosdesdeAWS.class
+com/eternal/api/CORSFilter.class
+com/eternal/api/resources/InsertUserRegister.class
+com/eternal/api/resources/ArchivoRequest.class
+com/eternal/api/resources/PingResource.class
+com/eternal/api/resources/RequestLogin.class

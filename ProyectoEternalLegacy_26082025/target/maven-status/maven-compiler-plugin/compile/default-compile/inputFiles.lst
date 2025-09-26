@@ -1,0 +1,10 @@
+/home/ubuntu/API_EternalLegacy/ProyectoEternalLegacy_26082025/src/main/java/com/eternal/api/resources/ArchivoRequest.java
+/home/ubuntu/API_EternalLegacy/ProyectoEternalLegacy_26082025/src/main/java/com/eternal/api/CORSFilter.java
+/home/ubuntu/API_EternalLegacy/ProyectoEternalLegacy_26082025/src/main/java/com/eternal/api/resources/UserPostgres.java
+/home/ubuntu/API_EternalLegacy/ProyectoEternalLegacy_26082025/src/main/java/com/eternal/api/resources/InsertContenidoUsuario.java
+/home/ubuntu/API_EternalLegacy/ProyectoEternalLegacy_26082025/src/main/java/com/eternal/api/resources/LeeDatosdesdeAWS.java
+/home/ubuntu/API_EternalLegacy/ProyectoEternalLegacy_26082025/src/main/java/com/eternal/api/resources/PingResource.java
+/home/ubuntu/API_EternalLegacy/ProyectoEternalLegacy_26082025/src/main/java/com/eternal/api/resources/InsertUserRegister.java
+/home/ubuntu/API_EternalLegacy/ProyectoEternalLegacy_26082025/src/main/java/com/eternal/api/resources/RequestLeeDtos.java
+/home/ubuntu/API_EternalLegacy/ProyectoEternalLegacy_26082025/src/main/java/com/eternal/api/AppConfig.java
+/home/ubuntu/API_EternalLegacy/ProyectoEternalLegacy_26082025/src/main/java/com/eternal/api/resources/RequestLogin.java

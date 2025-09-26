@@ -1,0 +1,5 @@
+com/eternal/api/CORSFilter.class
+com/eternal/api/AppConfig.class
+com/eternal/api/resources/PingResource.class
+com/eternal/api/resources/LeeDatosdesdeAWS.class
+com/eternal/api/resources/RequestLogin.class
